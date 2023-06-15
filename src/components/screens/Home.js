@@ -28,36 +28,34 @@ const Home=()=> {
             .then(response => {
                 const url = window.URL.createObjectURL(new Blob([response.data]));
                 // console.log(url);
-                const link = document.createElement('a');
-                link.href = url;
-                link.setAttribute('download', 'image.jpg');
-                // console.log(link.href);
-                document.body.appendChild(link);
-                // console.log(link)
-                // <a href="blob:http://localhost:3000/d9c739a3-a925-46fd-a2b0-44ca2ca7f917" download="image.jpg"></a>
-                link.click();
-                link.remove();
-            })
+                // Check if the device is Android
+        if (navigator.userAgent.toLowerCase().includes('android')) {
+            // For Android devices
+            const downloadButton = document.createElement('a');
+            downloadButton.href = url;
+            downloadButton.setAttribute('download', 'image.jpg');
+            downloadButton.style.display = 'none';
+            document.body.appendChild(downloadButton);
+            downloadButton.click();
+            document.body.removeChild(downloadButton);
+        } else if (typeof window.navigator.msSaveBlob !== 'undefined') {
+            // For Internet Explorer and Edge
+            window.navigator.msSaveBlob(response.data, 'image.jpg');
+        } else {
+            // For other devices (including Windows)
+            const link = document.createElement('a');
+            link.href = url;
+            link.setAttribute('download', 'image.jpg');
+            link.style.display = 'none';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+        })
             .catch(error => {
                 console.log(error);
             });
         };
-
-    // const makeComment =(text,postId)=>{
-    //     axios.get('http://localhost:5000/comment',{
-    //         headers:{
-    //                 "Content-Type":"application/json",
-    //                 "Authorization":"Bearer "+localStorage.getItem("jwt")
-    //         },
-    //     }).then(res=>{
-    //         console.log(res.data)
-            
-    //     })  
-    //     .catch(error=>{
-    //         console.log(error) 
-    //     })
-
-    // }
     return (
         <div className='home' >
             {
