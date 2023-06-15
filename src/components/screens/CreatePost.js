@@ -71,8 +71,8 @@ const CreatePost = () =>{
         })
         .then(res=>res.json())
         .then(data=>{
-            // console.log(data.url)
-            setUrl(data.url)
+            // console.log(data.secure_url)
+            setUrl(data.secure_url)
         })
         .catch(err=>{
             console.log(err)

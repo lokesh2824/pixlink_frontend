@@ -10,7 +10,7 @@ const Home=()=> {
                     "Authorization":"Bearer "+localStorage.getItem("jwt")
             },
         }).then(res=>{
-            // console.log(res.data.posts)
+            console.log(res.data.posts)
             setData(res.data.posts)
         })
         .catch(error=>{
@@ -27,37 +27,28 @@ const Home=()=> {
             })
             .then(response => {
                 const url = window.URL.createObjectURL(new Blob([response.data]));
-                // console.log(url);
-                // Check if the device is Android
-        if (navigator.userAgent.toLowerCase().includes('android')) {
-            // For Android devices
-            const downloadButton = document.createElement('a');
-            downloadButton.href = url;
-            downloadButton.setAttribute('download', 'image.jpg');
-            downloadButton.style.display = 'none';
-            document.body.appendChild(downloadButton);
-            downloadButton.click();
-            document.body.removeChild(downloadButton);
-        } else if (typeof window.navigator.msSaveBlob !== 'undefined') {
-            // For Internet Explorer and Edge
-            window.navigator.msSaveBlob(response.data, 'image.jpg');
-        } else {
-            // For other devices (including Windows)
-            const link = document.createElement('a');
-            link.href = url;
-            link.setAttribute('download', 'image.jpg');
-            link.style.display = 'none';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-        }
-        })
+                console.log(url);
+                const link = document.createElement('a');
+                link.href = url;
+                link.setAttribute('download', 'image.jpg');
+                // console.log(link.href);
+                document.body.appendChild(link);
+                // console.log(link)
+                // <a href="blob:http://localhost:3000/d9c739a3-a925-46fd-a2b0-44ca2ca7f917" download="image.jpg"></a>
+                link.click();
+                link.remove();
+            })
             .catch(error => {
                 console.log(error);
             });
         };
     return (
+        <div>
+        <div className='scrolling-sentence'>
+            <h5>The download function is only compatible with the Windows operating system</h5>
+            </div><br></br>
         <div className='home' >
+            
             {
                 data.map((pic)=>{
                     return(
@@ -79,6 +70,7 @@ const Home=()=> {
                             </form> */}
                             <button onClick={()=>handleDownload(pic.photo)} className="btn waves-effect waves-light download" id='download' >Download </button>
                             
+                            
                         </div>
                     </div>
                     )
@@ -87,6 +79,7 @@ const Home=()=> {
             }
             
             
+        </div>
         </div>
     )
 }

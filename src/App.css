@@ -48,7 +48,7 @@ a.brand-logo{
 .home-card{
   max-width: 300px;
   border-radius: 10px;
-  height: 400px;
+  height: 350px;
   
 }
 .card-context{
@@ -94,3 +94,22 @@ a.brand-logo{
 } */
 
 
+.scrolling-sentence {
+  overflow: hidden;
+}
+
+.scrolling-sentence h5 {
+  color: red;
+  white-space: nowrap;
+  display: inline-block;
+  animation: scrollText 10s linear infinite;
+}
+
+@keyframes scrollText {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
