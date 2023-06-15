@@ -44,9 +44,6 @@ const Home=()=> {
         };
     return (
         <div>
-        <div className='scrolling-sentence'>
-            <h5>The download function is only compatible with the Windows operating system</h5>
-            </div><br></br>
         <div className='home' >
             
             {
