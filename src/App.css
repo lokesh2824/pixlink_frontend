@@ -99,7 +99,7 @@ a.brand-logo{
 }
 
 .scrolling-sentence h5 {
-  color: red;
+  color: black;
   white-space: nowrap;
   display: inline-block;
   animation: scrollText 10s linear infinite;
