@@ -16,7 +16,7 @@ const Signup=()=> {
             return  M.toast({html: "Invalid Email" })
         }
 
-        axios.post('http://localhost:5000/signup', {
+        axios.post('https://pixlink-backend.onrender.com/signup', {
         name: name,
         email: email,
         password: password,
@@ -57,7 +57,7 @@ const Signup=()=> {
                 <h2>Pixlink</h2>
                 <input type='text' placeholder='Name' value={name} onChange={(e)=>setName(e.target.value)}/>
                 <input type='text' placeholder='email' value={email} onChange={(e)=>setEmail(e.target.value)} />
-                <input type='text' placeholder='password' value={password} onChange={(e)=>setPassword(e.target.value)}/>
+                <input type='password' placeholder='password' value={password} onChange={(e)=>setPassword(e.target.value)}/>
                 <button onClick={()=>postData()} className="btn waves-effect waves-light" >Signup</button>
                 <h5><Link to="/signin">Already have account ?</Link></h5>
             </div>

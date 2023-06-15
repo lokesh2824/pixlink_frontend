@@ -6,7 +6,7 @@ const Profile=()=> {
     const [mypics,setMypics] = useState([])
     const {state,dispatch} = useContext(UserContext)
     useEffect(()=>{
-        axios.get('http://localhost:5000/myposts',{
+        axios.get('https://pixlink-backend.onrender.com/myposts',{
             headers:{
                     "Authorization":"Bearer "+localStorage.getItem("jwt")
             },
@@ -21,23 +21,23 @@ const Profile=()=> {
         })
     },[]) 
 
-    const deleltePost=(postId)=>{
-        console.log(postId)
-        axios.delete(`http://localhost:5000/deletepost/${postId}`,{
-            headers:{
-                "Authorization":"Bearer "+localStorage.getItem("jwt")
-        }
-    }).then(res=>{
-        console.log(res.data)
-        const newData = mypics.filter(item => item._id !== postId);
-        setMypics(newData)
-    })
-    .catch(error=>{
-        console.log(error)
-    })
+//     const deleltePost=(postId)=>{
+//         console.log(postId)
+//         axios.delete(`http://localhost:5000/deletepost/${postId}`,{
+//             headers:{
+//                 "Authorization":"Bearer "+localStorage.getItem("jwt")
+//         }
+//     }).then(res=>{
+//         console.log(res.data)
+//         const newData = mypics.filter(item => item._id !== postId);
+//         setMypics(newData)
+//     })
+//     .catch(error=>{
+//         console.log(error)
+//     })
 
 
-}
+// }
 
     return (
         <div style={{maxWidth:"1000px", margin:"0px auto"}}>

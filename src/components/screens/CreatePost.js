@@ -11,9 +11,9 @@ const CreatePost = () =>{
     const [url,setUrl] = useState("")
 
     useEffect(()=>{
-
+        //https://pixlink-backend.onrender.com
         if(url){
-        axios.post('http://localhost:5000/createpost', {
+        axios.post('https://pixlink-backend.onrender.com/createpost', {
         title:title,
         body:body,
         pic:url,

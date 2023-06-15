@@ -7,8 +7,8 @@ const Navbar = ()=>{
   const navigate = useNavigate();
   const renderList = () =>{
     if(state){
-      return [<li><Link to="/profile">Profile</Link></li> ,
-      <li><Link to="/createpost">Upload</Link></li>,
+      return [<li><Link to="/profile" style={{paddingRight:"0px"}}>Profile</Link></li> ,
+      <li><Link to="/createpost" style={{paddingRight:"0px"}} >Upload</Link></li>,
       <li>
       <button onClick={()=>{
                             localStorage.clear()
@@ -26,7 +26,7 @@ const Navbar = ()=>{
     return(
         <nav>
         <div className="nav-wrapper #009688 teal">
-          <Link to={state?"/":"/signin"} className="brand-logo left">Pixlink</Link>
+          <Link to={state?"/":"/signin"} className="brand-logo left" style={{marginLeft:"5px"}}>Pixlink</Link>
           <ul id="nav-mobile" className="right">
             {renderList()}
             

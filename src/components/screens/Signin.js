@@ -17,7 +17,7 @@ const Signin=()=> {
             return  M.toast({html: "Invalid Email" })
         }
 
-        axios.post('http://localhost:5000/signin', {
+        axios.post('https://pixlink-backend.onrender.com/signin', {
         email: email,
         password: password,
         })
@@ -32,7 +32,7 @@ const Signin=()=> {
         })
         .catch((err) => {
             console.log(err.response.data);
-            // M.toast({html: err.response.data.error })
+            M.toast({html: err.response.data.error })
 
         });
     }
@@ -42,7 +42,7 @@ const Signin=()=> {
             <div className="card auth-card">
                 <h2>Pixlink</h2>
                 <input type='text' placeholder='email' value={email} onChange={(e)=>setEmail(e.target.value)} />
-                <input type='text' placeholder='password' value={password} onChange={(e)=>setPassword(e.target.value)}/>
+                <input type='password' placeholder='password' value={password} onChange={(e)=>setPassword(e.target.value)}/>
                 <button onClick={()=>postData()} className="btn waves-effect waves-light" >Signin</button>
                 <h5><Link to="/signup">Don't have account ?</Link></h5>
             </div>
