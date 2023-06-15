@@ -44,6 +44,9 @@ const Home=()=> {
         };
     return (
         <div>
+        <div className='scrolling-sentence'>
+            <h5>Welcome to Pixlink! This platform offers you the opportunity to share and explore a wide variety of captivating photographs.</h5>
+            </div><br></br>
         <div className='home' >
             
             {
