@@ -23,7 +23,7 @@ const Profile=()=> {
     },[]) 
 
     const deletePost = (postId) => {
-        axios.delete(`https://pixlink-backend.onrender.comdeletepost/${postId}`, {
+        axios.delete(`https://pixlink-backend.onrender.com/deletepost/${postId}`, {
             headers: {
                 "Authorization": "Bearer " + localStorage.getItem("jwt")
             }
