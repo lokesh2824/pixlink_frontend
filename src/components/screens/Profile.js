@@ -1,6 +1,7 @@
 import React,{useEffect,useState,useContext} from 'react'
 import { UserContext } from '../../App'
 import axios from 'axios'
+import M from 'materialize-css'
 
 const Profile=()=> {
     const [mypics,setMypics] = useState([])
@@ -21,23 +22,22 @@ const Profile=()=> {
         })
     },[]) 
 
-//     const deleltePost=(postId)=>{
-//         console.log(postId)
-//         axios.delete(`http://localhost:5000/deletepost/${postId}`,{
-//             headers:{
-//                 "Authorization":"Bearer "+localStorage.getItem("jwt")
-//         }
-//     }).then(res=>{
-//         console.log(res.data)
-//         const newData = mypics.filter(item => item._id !== postId);
-//         setMypics(newData)
-//     })
-//     .catch(error=>{
-//         console.log(error)
-//     })
-
-
-// }
+    const deletePost = (postId) => {
+        axios.delete(`https://pixlink-backend.onrender.comdeletepost/${postId}`, {
+            headers: {
+                "Authorization": "Bearer " + localStorage.getItem("jwt")
+            }
+            })
+            .then(res => {
+                console.log(res.data);
+                M.toast({html: res.data.message })
+                // Remove the deleted post from the mypics state
+                setMypics(prevMypics => prevMypics.filter(pic => pic._id !== postId));
+            })
+            .catch(error => {
+                console.log(error);
+            });
+        };
 
     return (
         <div style={{maxWidth:"1000px", margin:"0px auto"}}>
@@ -64,6 +64,9 @@ const Profile=()=> {
                                     <img className='item' src={pic.photo} alt={pic.title} ></img>
                                     {/* <button><i class="material-icons delete-icon" onClick={deleltePost(pic._id)}>delete</i></button> */}
                                     {/* <button onClick={()=>deleltePost(pic._id)} className="btn waves-effect waves-light download" >Delete </button> */}
+                                </div>
+                                    <div>
+                                <button onClick={() => deletePost(pic._id)} className="btn waves-effect waves-light download" id='del' >Delete </button>
                                 </div>
                                 {/* <div>
                                 <button onClick={()=>deleltePost(pic._id)} className="btn waves-effect waves-light download" id='del' >Delete </button>
