@@ -55,10 +55,10 @@ const Home=()=> {
             {
                 data.map((pic)=>{
                     return(
-                    <div className='card home-card' key={pic._id}>
+                    <div className='card home-card'  style={{width: "500px", height:"400px"}} key={pic._id}>
                         <h5 className='upload-by'>{pic.postedBy.name}</h5>
                         <div className='card-image'>
-                            <img src={pic.photo}/>
+                            <img style={{maxHeight: "200px" }} src={pic.photo}/>
                         </div>
                         <div className='card-context'>
                             <h6>{pic.title}</h6>
