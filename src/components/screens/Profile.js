@@ -12,9 +12,12 @@ const Profile=()=> {
                     "Authorization":"Bearer "+localStorage.getItem("jwt")
             },
         }).then(res=>{
+            const SortOrder = res.data.mypost.sort((a, b) =>     a.createdAt > b.createdAt ? -1 : 1,);
             console.log(res.data.mypost)
-            setMypics(res.data.mypost) 
+            // setMypics(res.data.mypost) 
             // console.log(res.data.myposts) 
+            console.log(SortOrder)
+            setMypics(SortOrder)
             
         })  
         .catch(error=>{
@@ -59,9 +62,9 @@ const Profile=()=> {
                 {
                     mypics.map((pic)=>{
                         return(
-                            <div className='profile-pic'>
+                            <div className='profile-pic' style={{width: "300px", height:"400px"}}>
                                 <div >
-                                    <img className='item' src={pic.photo} alt={pic.title} ></img>
+                                    <img style={{maxHeight: "200px" }} className='item' src={pic.photo} alt={pic.title} ></img>
                                     {/* <button><i class="material-icons delete-icon" onClick={deleltePost(pic._id)}>delete</i></button> */}
                                     {/* <button onClick={()=>deleltePost(pic._id)} className="btn waves-effect waves-light download" >Delete </button> */}
                                 </div>
