@@ -10,8 +10,11 @@ const Home=()=> {
                     "Authorization":"Bearer "+localStorage.getItem("jwt")
             },
         }).then(res=>{
+            const SortOrder = res.data.posts.sort((a, b) =>     a.createdAt > b.createdAt ? -1 : 1,);
             console.log(res.data.posts)
-            setData(res.data.posts)
+            // setData(res.data.posts)
+            setData(SortOrder)
+            
         })
         .catch(error=>{
             console.log(error)
