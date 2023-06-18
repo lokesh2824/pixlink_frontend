@@ -61,7 +61,7 @@ const Home=()=> {
                             <img style={{maxHeight: "200px" }} src={pic.photo}/>
                         </div>
                         <div className='card-context'>
-                            <h6>{pic.title}</h6>
+                            <h6 style={{marginTop:"auto"}}>{pic.title}</h6>
                             <p>{pic.body}</p>
                             {/* <form 
                                 //onSubmit={(e)=>{
