@@ -12,7 +12,7 @@ const Signin=()=> {
     const [password,setPassword] = useState("")
 
     const postData =()=>{
-        const emailCheck = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$$/
+        const emailCheck = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/i;
         if(!emailCheck.test(email)){
             return  M.toast({html: "Invalid Email" })
         }
